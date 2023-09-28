@@ -3,11 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:background="@drawable/ic_bg"
-    tools:context=".MainActivity"
     android:gravity="center">
 
 
@@ -55,18 +55,20 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hintName"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textName"
+                    android:id="@+id/etName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLines="1"
-                    android:inputType="text"
+                    android:inputType="textCapWords"
+                    android:textColor="@color/grey"
+                    android:hint="e.g. John"
+                    android:textColorHint="#7A8089"
+
+
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -77,10 +79,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/btnStart"
+                android:textColor="@color/white"
                 android:textAllCaps="true"
-                android:textSize="17sp"
+                android:textSize="18sp"
                 android:padding="12dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/design_default_color_primary"
                 />
 
 

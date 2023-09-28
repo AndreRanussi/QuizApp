@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.WindowCompat
 import com.course.quizapp.CountrList.countries
@@ -33,8 +34,6 @@ class MainActivity : AppCompatActivity() {
 
             if(etName.text.isNotEmpty()) {
                 playerName = etName.text.toString()
-                var country = countries[2]
-                println(country)
                 val intent = Intent(this, QuizQuestionsActivity::class.java)
                 startActivity(intent)
                 finish()

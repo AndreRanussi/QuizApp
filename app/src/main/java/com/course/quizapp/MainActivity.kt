@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.view.WindowCompat
 
@@ -25,13 +26,11 @@ class MainActivity() : AppCompatActivity() {
         val etName: EditText = findViewById(R.id.etName)
         var playerName: String = ""
 
-        var options = QuestionGenerator()
 
 
-        var test = options.options
 
 
-         Log.d("myTag", "$test")
+         Log.d("myTag", "string")
 
 
 
@@ -41,9 +40,11 @@ class MainActivity() : AppCompatActivity() {
 
             if(etName.text.isNotEmpty()) {
                 playerName = etName.text.toString()
+                QuestionGenerator().optionsGenerator()
                 val intent = Intent(this, QuizQuestionsActivity::class.java)
                 startActivity(intent)
                 finish()
+
             } else {
                 Toast.makeText(this, "Please enter your name", Toast.LENGTH_LONG).show()
             }

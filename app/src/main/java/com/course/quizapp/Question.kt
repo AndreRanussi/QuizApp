@@ -3,9 +3,8 @@ package com.course.quizapp
 import android.media.Image
 
 data class Question(
-    val id: Int,
-    val question: String,
-    val image: Int,
+    val question: String = "What country does this flag belong to?",
+    val image: String,
     val optionOne: String,
     val optionTwo: String,
     val optionThree: String,

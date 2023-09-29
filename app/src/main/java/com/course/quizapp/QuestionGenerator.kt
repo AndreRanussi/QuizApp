@@ -6,39 +6,70 @@ import kotlin.random.nextInt
 
 class QuestionGenerator {
 
-    // answer options
-    var options = mutableListOf<Int>()
+    // PROPERTIES
 
-    var correctAnswer: Int = 0
-    var answerTracker = mutableListOf<Int>()
+    private var answerOptions = mutableListOf<Int>()
+
+    private var correctAnswer: Int = 0
+    private var answerTracker = mutableListOf<Int>()
 
 
-    // random number generator
-    private fun generateRandomNumber() : Int {
-        return Random.nextInt(0..249)
+
+    // MEHTODS
+
+    private fun optionsRandomNumber() : Int {
+        return Random.nextInt(0..248)
     }
 
-// populate the list of option with 4 unique options
+    private fun answerRandomNumber() : Int {
+        return Random.nextInt(0..3)
+    }
+
     fun optionsGenerator() {
-        var randomNum = generateRandomNumber()
+        var randomNum = optionsRandomNumber()
         clearOptions()
-        // while look of 4 to check if random number is already in the options list, if not, add to the list, if yes regenerate a random number and retry.
-        while (options.size < 5) {
-            if (!options.contains(randomNum)) {
-                options.add(randomNum)
-                randomNum = generateRandomNumber()
+
+        while (answerOptions.size < 5) {
+            if (!answerOptions.contains(randomNum)) {
+                answerOptions.add(randomNum)
+                randomNum = optionsRandomNumber()
             } else {
-                randomNum = generateRandomNumber()
+                randomNum = optionsRandomNumber()
             }
         }
-    }
-
-    // clear option list
-    fun clearOptions() {
-        options.clear()
+        answerGenerator()
     }
 
     // generate answer
+    fun answerGenerator() {
+        var randomNum  = answerRandomNumber()
+        while (answerTracker.contains(answerOptions[randomNum])) {
+            randomNum = answerRandomNumber()
+        }
+        correctAnswer = answerOptions[randomNum]
+        answerTracker.add(answerOptions[randomNum])
+    }
+
+
+    // clear option list
+    fun clearOptions() {
+        answerOptions.clear()
+    }
+
+    // clear answer tracker
+    fun clearAnswerTracker() {
+        answerTracker.clear()
+
+    }
+
+    // retrieve options
+    fun getOptions(): MutableList<Int> {
+            return answerOptions
+        }
+    // retrieve answer
+    fun getCorrectAnswer(): Int {
+        return correctAnswer
+    }
 
 
 

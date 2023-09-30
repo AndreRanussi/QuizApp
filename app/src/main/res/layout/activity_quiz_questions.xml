@@ -17,22 +17,57 @@
         android:textColor="@color/grey"
         android:textAlignment="center"
 
-
         />
 
     <ImageView
         android:id="@+id/flagImage"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="240dp"
+
+        android:layout_marginTop="20dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_marginTop="20dp"
-        android:src="https://flagsapi.com/BR/flat/64.png"
         />
 
+    <Button
+        android:id="@+id/buttonOne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Option1"
+        android:textSize="20sp"
+        />
 
+    <Button
+        android:id="@+id/buttonTwo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Option1"
+        android:textSize="20sp"
+        />
 
-
-
-
+    <Button
+        android:id="@+id/buttonThree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Option1"
+        android:textSize="20sp"
+        />
+    <Button
+        android:id="@+id/buttonFour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Option1"
+        android:textSize="20sp"
+        />
 
 
 

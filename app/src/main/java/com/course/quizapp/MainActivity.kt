@@ -26,21 +26,14 @@ class MainActivity() : AppCompatActivity() {
         val etName: EditText = findViewById(R.id.etName)
         var playerName: String = ""
 
-
-
-
-
          Log.d("myTag", "string")
 
-
-
-
         btnStart.setOnClickListener {
-
+            val questionGenerator = QuestionGenerator()
 
             if(etName.text.isNotEmpty()) {
                 playerName = etName.text.toString()
-                QuestionGenerator().optionsGenerator()
+                questionGenerator.optionsGenerator()
                 val intent = Intent(this, QuizQuestionsActivity::class.java)
                 startActivity(intent)
                 finish()

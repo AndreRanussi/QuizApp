@@ -18,7 +18,7 @@ class QuestionGenerator {
     // MEHTODS
 
     private fun optionsRandomNumber() : Int {
-        return Random.nextInt(0..254)
+        return Random.nextInt(0..Countries.size)
     }
 
     private fun answerRandomNumber() : Int {

@@ -18,18 +18,18 @@ class QuestionGenerator {
     // MEHTODS
 
     private fun optionsRandomNumber() : Int {
-        return Random.nextInt(0..Countries.size)
+        return Random.nextInt(Countries.indices)
     }
 
     private fun answerRandomNumber() : Int {
-        return Random.nextInt(0..3)
+        return Random.nextInt(answerOptions.indices)
     }
 
     fun optionsGenerator() {
         var randomNum = optionsRandomNumber()
         clearOptions()
 
-        while (answerOptions.size < 5) {
+        while (answerOptions.size < 4) {
             if (!answerOptions.contains(randomNum)) {
                 answerOptions.add(randomNum)
                 randomNum = optionsRandomNumber()
@@ -39,6 +39,7 @@ class QuestionGenerator {
         }
         answerGenerator()
     }
+
 
     // generate answer
     fun answerGenerator() {
@@ -52,7 +53,7 @@ class QuestionGenerator {
 
 
     // clear option list
-    fun clearOptions() {
+   private fun clearOptions() {
         answerOptions.clear()
     }
 
@@ -60,6 +61,10 @@ class QuestionGenerator {
     fun clearAnswerTracker() {
         answerTracker.clear()
 
+    }
+
+    fun getAnswerTracker(): MutableList<Int> {
+        return answerTracker
     }
 
     // retrieve options

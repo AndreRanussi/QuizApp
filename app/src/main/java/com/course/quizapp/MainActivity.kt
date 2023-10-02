@@ -1,12 +1,11 @@
 package com.course.quizapp
 
 import android.content.Intent
+import android.media.session.MediaSession.QueueItem
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.view.WindowCompat
 
@@ -26,7 +25,6 @@ class MainActivity() : AppCompatActivity() {
         val etName: EditText = findViewById(R.id.etName)
         var playerName: String = ""
 
-         Log.d("myTag", "string")
 
         btnStart.setOnClickListener {
             val questionGenerator = QuestionGenerator()

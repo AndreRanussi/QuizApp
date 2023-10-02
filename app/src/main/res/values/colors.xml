@@ -4,4 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#353A43</color>
     <color name="btnColor">#673AB7</color>
+    <color name="right">#007F2D</color>
+    <color name="wrong">#E30613</color>
 </resources>

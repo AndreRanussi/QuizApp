@@ -22,24 +22,31 @@ class MainActivity() : AppCompatActivity() {
 
         //APP FUNCTIONALITY
         val btnStart: Button = findViewById(R.id.btnStart)
-        val etName: EditText = findViewById(R.id.etName)
-        var playerName: String = ""
+        val etNumber: EditText = findViewById(R.id.etNumber)
+
+        var amountOfQuestions = 0
+
 
 
         btnStart.setOnClickListener {
             val questionGenerator = QuestionGenerator()
 
-            if(etName.text.isNotEmpty()) {
-                playerName = etName.text.toString()
+            if(etNumber.text.isNotEmpty()) {
+                amountOfQuestions = etNumber.text.toString().toInt()
                 questionGenerator.optionsGenerator()
-                val intent = Intent(this, QuizQuestionsActivity::class.java)
+                val intent = Intent(this, QuizQuestionsActivity::class.java).apply {
+                    putExtra("data", amountOfQuestions)
+                }
+
                 startActivity(intent)
                 finish()
 
             } else {
-                Toast.makeText(this, "Please enter your name", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Please a Number of Quetions", Toast.LENGTH_LONG).show()
             }
         }
 
     }
+
+
 }

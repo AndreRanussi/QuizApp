@@ -61,16 +61,13 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etName"
+                    android:id="@+id/etNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textCapWords"
+                    android:inputType="number"
                     android:textColor="@color/grey"
-                    android:hint="e.g. John"
-                    android:textColorHint="#7A8089"
-
-
-                    />
+                    android:hint="E.g 20"
+                    android:textColorHint="#7A8089"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 

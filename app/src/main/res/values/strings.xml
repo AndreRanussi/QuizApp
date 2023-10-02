@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">QuizApp</string>
     <string name="welcome">Welcome</string>
-    <string name="enterName">Please Enter Your Name</string>
+    <string name="enterName">Many Questions Would You Like To Answer?</string>
     <string name="appName">Quiz App!</string>
-    <string name="hintName">Name</string>
+    <string name="hintName">Enter a Number</string>
     <string name="btnStart">start</string>
 </resources>

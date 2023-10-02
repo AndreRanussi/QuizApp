@@ -14,6 +14,10 @@ import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 
+private fun Any.postDelayed(any: Any) {
+
+}
+
 class QuizQuestionsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,20 +34,20 @@ class QuizQuestionsActivity : AppCompatActivity() {
         val flagImage: ImageView = findViewById(R.id.flagImage)
         val generate = QuestionGenerator()
 
-
         var correctAnswer = ""
         var questionCount = 1
-        var totalQuestions = 10
+        var totalQuestions = intent.getLongExtra("data", 0)
         var correctAnsCount = 0
 
         val right = "#007F2D"
         val wrong = "#E30613"
 
 
+
         fun start() {
 
             // show question counter
-            questionCounter.text = "$questionCount / $totalQuestions"
+            questionCounter.text = "$questionCount / ${totalQuestions.toInt()}"
             //initialise the question generator
             generate.optionsGenerator()
             generate.answerGenerator()
@@ -79,7 +83,7 @@ class QuizQuestionsActivity : AppCompatActivity() {
                 .into(flagImage);
 
 
-            val progressCount = 100/totalQuestions
+            val progressCount = 100/totalQuestions.toInt()
             progressBar.incrementProgressBy(progressCount)
         }
         // call the start function to have a the initial(first) flag question.
@@ -123,18 +127,6 @@ class QuizQuestionsActivity : AppCompatActivity() {
             }
         }
 
-        // check score to know when to finish the game
-        fun checkScore() {
-
-            if(questionCount > totalQuestions){
-                val intent = Intent(this, ScoreActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
-
-        }
-
-
         // check answer track score
         fun check(view: View) {
             val button = view as Button
@@ -153,9 +145,18 @@ class QuizQuestionsActivity : AppCompatActivity() {
             val mainHandler = Handler(Looper.getMainLooper())
             disableButtons()
             mainHandler.postDelayed({
-                start()
-                resetColors()
-                checkScore()
+
+                // check score to know when to finish the game
+                if(questionCount > totalQuestions) {
+
+                    val intent = Intent(this, ScoreActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                    resetColors()
+                } else {
+                    start()
+                    resetColors()
+                }
                                     }, 1000)
 
 

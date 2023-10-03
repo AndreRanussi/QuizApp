@@ -6,17 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
 import com.bumptech.glide.Glide
-
-private fun Any.postDelayed(any: Any) {
-
-}
 
 class QuizQuestionsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,8 +32,10 @@ class QuizQuestionsActivity : AppCompatActivity() {
 
         var correctAnswer = ""
         var questionCount = 1
-        var totalQuestions = intent.getLongExtra("data", 0)
+        val totalQuestions = intent.getIntExtra("questions", 0)
         var correctAnsCount = 0
+
+        Log.d("MyTagCount", "$totalQuestions")
 
         val right = "#007F2D"
         val wrong = "#E30613"
@@ -45,9 +43,8 @@ class QuizQuestionsActivity : AppCompatActivity() {
 
 
         fun start() {
-
             // show question counter
-            questionCounter.text = "$questionCount / ${totalQuestions.toInt()}"
+            questionCounter.text = (questionCount / totalQuestions).toString()
             //initialise the question generator
             generate.optionsGenerator()
             generate.answerGenerator()
@@ -58,10 +55,10 @@ class QuizQuestionsActivity : AppCompatActivity() {
             val (numOne, numTwo, numThree, numFour) = options
 
             // destructuring each option to obtain the country code and name.
-            val (oneCode, oneName) = Countries[numOne]
-            val (twoCode, twoName) = Countries[numTwo]
-            val (threeCode, threeName) = Countries[numThree]
-            val (fourCode, fourName) = Countries[numFour]
+            val (_, oneName) = Countries[numOne]
+            val (_, twoName) = Countries[numTwo]
+            val (_, threeName) = Countries[numThree]
+            val (_, fourName) = Countries[numFour]
 
             // getting answer
             val answer = generate.getCorrectAnswer()
@@ -75,15 +72,15 @@ class QuizQuestionsActivity : AppCompatActivity() {
             buttonFour.text = fourName
 
             // show the correct answer's flag
-            val url: String = "https://flagcdn.com/h240/$answersCode.jpg"
+            val url = "https://flagcdn.com/h240/$answersCode.jpg"
 
             Glide
                 .with(this)
                 .load(url)
-                .into(flagImage);
+                .into(flagImage)
 
 
-            val progressCount = 100/totalQuestions.toInt()
+            val progressCount = 100/totalQuestions
             progressBar.incrementProgressBy(progressCount)
         }
         // call the start function to have a the initial(first) flag question.
@@ -150,9 +147,14 @@ class QuizQuestionsActivity : AppCompatActivity() {
                 if(questionCount > totalQuestions) {
 
                     val intent = Intent(this, ScoreActivity::class.java)
+
+
+                    intent.putExtra("questions", totalQuestions)
+                    intent.putExtra("correctAnsCount", correctAnsCount)
                     startActivity(intent)
                     finish()
                     resetColors()
+
                 } else {
                     start()
                     resetColors()

@@ -5,4 +5,5 @@
     <string name="appName">Quiz App!</string>
     <string name="hintName">Enter a Number</string>
     <string name="btnStart">start</string>
+    <string name="totalQuestionsString">OUT OF %d</string >
 </resources>

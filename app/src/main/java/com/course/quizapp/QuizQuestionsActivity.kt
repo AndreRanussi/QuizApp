@@ -35,16 +35,14 @@ class QuizQuestionsActivity : AppCompatActivity() {
         val totalQuestions = intent.getIntExtra("questions", 0)
         var correctAnsCount = 0
 
-        Log.d("MyTagCount", "$totalQuestions")
 
         val right = "#007F2D"
         val wrong = "#E30613"
 
-
-
         fun start() {
             // show question counter
-            questionCounter.text = (questionCount / totalQuestions).toString()
+            generate.clearAnswerTracker()
+            questionCounter.text = "$questionCount / $totalQuestions"
             //initialise the question generator
             generate.optionsGenerator()
             generate.answerGenerator()
